@@ -4,11 +4,12 @@ from PIL import Image
 
 
 img = Image.open(sys.argv[1]).convert('RGBA')
+output_name = sys.argv[2] if len(sys.argv) >= 3 else "ssd1306_font.c"
 
 col, row = img.size
 pixels = img.load()
 
-with open("ssd1306_font.c", "w") as f:
+with open(output_name, "w") as f:
     f.write("#include \"ssd1306.h\"\n\n")
     f.write("static const uint8_t font_data[] = {\n")
 

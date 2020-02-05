@@ -27,7 +27,6 @@
 #endif
 
 #include "ssd1306_config.h"
-#include "font.h"
 
 /* vvv I2C config vvv */
 
