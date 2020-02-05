@@ -92,8 +92,8 @@ typedef struct {
 } font_def_t;
 
 // Procedure definitions
-void ssd1306_init(font_def_t* font);
-void ssd1306_set_font(font_def_t* font);
+void ssd1306_init(const font_def_t* font);
+void ssd1306_set_font(const font_def_t* font);
 void ssd1306_update_screen();
 void ssd1306_set_cursor(uint8_t x, uint8_t y);
 void ssd1306_write_string(const char* str);

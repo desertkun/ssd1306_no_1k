@@ -4,7 +4,7 @@
 // Screen buffer
 static char display_buffer[SSD1306_WIDTH * SSD1306_HEIGHT];
 static uint8_t display_position;
-static font_def_t* display_font;
+static const font_def_t* display_font;
 
 #if defined(SSD1306_USE_I2C)
 
@@ -57,7 +57,7 @@ void ssd1306_write_data(uint8_t* buffer, size_t buff_size) {
 
 
 // Initialize the oled screen
-void ssd1306_init(font_def_t* font)
+void ssd1306_init(const font_def_t* font)
 {
     display_position = 0;
     display_font = font;
@@ -129,7 +129,7 @@ void ssd1306_init(font_def_t* font)
 
 }
 
-void ssd1306_set_font(font_def_t* font)
+void ssd1306_set_font(const font_def_t* font)
 {
     display_font = font;
 }
