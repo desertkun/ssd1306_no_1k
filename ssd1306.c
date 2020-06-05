@@ -72,7 +72,7 @@ void ssd1306_init(const font_def_t* font)
     ssd1306_write_command(0xAE); //display off
 
     ssd1306_write_command(0x20); //Set Memory Addressing Mode   
-    ssd1306_write_command(0x00); // 00b,Horizontal Addressing Mode; 01b,Vertical Addressing Mode;
+    ssd1306_write_command(0x10); // 00b,Horizontal Addressing Mode; 01b,Vertical Addressing Mode;
                                  // 10b,Page Addressing Mode (RESET); 11b,Invalid
 
     ssd1306_write_command(0xB0); //Set Page Start Address for Page Addressing Mode,0-7
@@ -136,14 +136,14 @@ void ssd1306_set_font(const font_def_t* font)
 
 void ssd1306_update_screen()
 {
-    ssd1306_write_command(0xB0);
-    ssd1306_write_command(0x00);
-    ssd1306_write_command(0x10);
 
     char *ch = display_buffer;
 
     for(uint8_t y = 0; y < SSD1306_HEIGHT; y++)
     {
+        ssd1306_write_command(0xB0 | y);
+        ssd1306_write_command(0x00);
+        ssd1306_write_command(0x10);
         for(uint8_t x = 0; x < SSD1306_WIDTH; x++)
         {
             const uint8_t* data;
